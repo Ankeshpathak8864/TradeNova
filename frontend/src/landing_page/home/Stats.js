@@ -19,11 +19,11 @@ function Stats() {
 
                 </div>
                 <div className="col-6 mt-5">
-                    <img src="media/images/ecosystem.png" style={{width:"90%"}} />
+                    <img alt="TradeNova" src="/media/images/ecosystem.png" style={{width:"90%"}} />
 
                     <div className='text-center'>
-                        <a href="" className="mx-5" style={{textDecoration:"none"}}>Explore our products</a>
-                        <a href="" style={{textDecoration:"none"}}>Try Kite demo</a>
+                        <a href="/" className="mx-5" style={{textDecoration:"none"}}>Explore our products</a>
+                        <a href="/" style={{textDecoration:"none"}}>Try Kite demo</a>
                     </div>
                 </div>
             </div>

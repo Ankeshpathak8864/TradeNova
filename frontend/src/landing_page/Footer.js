@@ -5,35 +5,35 @@ function Footer() {
       <div className="container border-top mt-5" >
         <div className="row mt-5">
             <div className="col">
-                <img src="media/images/logo.svg" style={{width:"50%"}}  />
+                <img alt="TradeNova" src="/media/images/logo.svg" style={{width:"50%"}}  />
                 <p>&copy; 2010 - 2025, Zerodha Broking Ltd. All rights reserved.</p>
 
 
             </div>
             <div className="col">
               <p>Company</p>
-                <a href="">About</a><br />
-                <a href="">Product</a><br />
-                <a href="">Pricing</a><br />
-                <a href="">Referal programming</a><br />
-                <a href="">Careers</a><br />
-                <a href="">Zerodha tech</a><br />
-                <a href="">Press & media</a><br />
-                <a href="">Zerodha cares(CSR)</a><br />
+                <a href="/">About</a><br />
+                <a href="/">Product</a><br />
+                <a href="/">Pricing</a><br />
+                <a href="/">Referal programming</a><br />
+                <a href="/">Careers</a><br />
+                <a href="/">Zerodha tech</a><br />
+                <a href="/">Press & media</a><br />
+                <a href="/">Zerodha cares(CSR)</a><br />
             </div>
             <div className="col">
               <p>Support</p>
-                <a href="">Contact</a><br />
-                <a href="">Support portal</a><br />
-                <a href="">Z-Connect blog</a><br />
-                <a href="">List of charges</a><br />
-                <a href="">Download & resources</a><br />
+                <a href="/">Contact</a><br />
+                <a href="/">Support portal</a><br />
+                <a href="/">Z-Connect blog</a><br />
+                <a href="/">List of charges</a><br />
+                <a href="/">Download & resources</a><br />
             </div>
             <div className="col">
               <p>Account</p>
-                <a href="">Open an account</a><br />
-                <a href="">Fund transfer</a><br />
-                <a href="">60 day challenge</a><br />
+                <a href="/">Open an account</a><br />
+                <a href="/">Fund transfer</a><br />
+                <a href="/">60 day challenge</a><br />
                 
             </div>
         </div>
@@ -46,7 +46,7 @@ function Footer() {
 
        <p>Investments in securities market are subject to market risks; read all the related documents carefully before investing.</p>
 
-        <p>Attention investors: 1) Stock brokers can accept securities as margins from clients only by way of pledge in the depository system w.e.f September 01, 2020. 2) Update your e-mail and phone number with your stock broker / depository participant and receive OTP directly from depository on your e-mail and/or mobile number to create pledge. 3) Check your securities / MF / bonds in the consolidated account statement issued by NSDL/CDSL every month.</p>
+        <p>Attention investors: 1 Stock brokers can accept securities as margins from clients only by way of pledge in the depository system w.e.f September 01, 2020. 2) Update your e-mail and phone number with your stock broker / depository participant and receive OTP directly from depository on your e-mail and/or mobile number to create pledge. 3) Check your securities / MF / bonds in the consolidated account statement issued by NSDL/CDSL every month.</p>
 
 
         <p>India's largest broker based on networth as per NSE. NSE broker factsheet</p>
