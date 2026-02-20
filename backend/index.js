@@ -165,7 +165,7 @@ app.post("/signup", async (req, res) => {
     const user = new UserModel({ name, email, password });
     await user.save();
 
-    // 🔐 CREATE TOKEN
+    //  CREATE TOKEN
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET,
