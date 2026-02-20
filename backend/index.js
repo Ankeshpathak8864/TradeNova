@@ -249,13 +249,15 @@ app.post("/logout", (req, res) => {
   res.json({ message: "Logged out" });
 });
 
-
 mongoose
   .connect(uri)
   .then(() => {
     console.log("DB connected!");
-    app.listen(process.env.PORT || 3002, () =>
-      console.log("Server started")
-    );
+
+    const PORT = process.env.PORT || 3002;
+
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}`);
+    });
   })
   .catch(err => console.error(err));
