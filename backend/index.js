@@ -21,7 +21,7 @@ const app=express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: true, // allow all origins (safe for now)
     credentials: true,
   })
 );
@@ -172,10 +172,11 @@ app.post("/signup", async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    res.cookie("token", token, {
+  res.cookie("token", token, {
   httpOnly: true,
-  sameSite: "lax",
-  maxAge: 24 * 60 * 60 * 1000, // 1 day
+  sameSite: "lax",   // change this
+  secure: false,     // VERY IMPORTANT for localhost
+  maxAge: 24 * 60 * 60 * 1000,
 });
 
 res.status(201).json({
@@ -201,18 +202,20 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // 🔐 CREATE TOKEN
+    // CREATE TOKEN
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
 
-   res.cookie("token", token, {
+ res.cookie("token", token, {
   httpOnly: true,
   sameSite: "lax",
+  secure: false,
   maxAge: 24 * 60 * 60 * 1000,
 });
+
 
 res.json({
   message: "Login successful",
@@ -239,13 +242,16 @@ app.get("/auth/check", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+  sameSite: "lax",
+  secure: false,
+});
   res.json({ message: "Logged out" });
 });
 
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(uri)
   .then(() => {
     console.log("DB connected!");
     app.listen(process.env.PORT || 3002, () =>
