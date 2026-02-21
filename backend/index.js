@@ -20,16 +20,20 @@ const app = express();
 /* ================= CORS CONFIG (PRODUCTION SAFE) ================= */
 app.use(
   cors({
-    origin: [
-      "https://trade-nova-amber.vercel.app",
-      "https://trade-nova-fhus-jvgof2bh8-ankesh-projects.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (
+        origin.includes("vercel.app")
+      ) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
-
-app.use(bodyParser.json());
-app.use(cookieParser());
 
 /* ================= MARKET DATA ROUTES ================= */
 
