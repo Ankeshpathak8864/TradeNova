@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,14 +12,15 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3002/login",
+        `${API_URL}/login`,
         { email, password },
-        { withCredentials: true }   // ✅ REQUIRED CHANGE
+        { withCredentials: true }
       );
 
       localStorage.setItem("token", res.data.token);
 
-      window.location.href = "http://localhost:3001"; // ✅ CORRECT PLACE
+      // Redirect to deployed dashboard
+      window.location.href = "https://trade-nova-fhus-jvgof2bh8-ankesh-projects.vercel.app";
     } catch (error) {
       alert("Invalid email or password");
       console.error(error);

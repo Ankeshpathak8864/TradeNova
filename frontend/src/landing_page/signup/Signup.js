@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,22 +18,22 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const res = await axios.post(
-      "http://localhost:3002/signup",
-      formData
-    );
+    try {
+      const res = await axios.post(
+        `${API_URL}/signup`,
+        formData
+      );
 
-    localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token", res.data.token);
 
-    window.location.href = "http://localhost:3001";
-  } catch (error) {
-    alert("Signup failed");
-    console.error(error);
-  }
-};
+      window.location.href = "https://trade-nova-fhus-jvgof2bh8-ankesh-projects.vercel.app";
+    } catch (error) {
+      alert("Signup failed");
+      console.error(error);
+    }
+  };
 
   return (
     <div style={{ padding: "40px" }}>
