@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 
 const express = require("express");
-app.set("trust proxy", 1);
+
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
