@@ -155,6 +155,8 @@ app.get("/holdings", async (req, res) => {
 // SIGNUP
 app.post("/signup", async (req, res) => {
   try {
+    console.log("Signup request body:", req.body);
+
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -167,13 +169,17 @@ app.post("/signup", async (req, res) => {
     }
 
     const user = new UserModel({ name, email, password });
-    await user.save();
+
+    const savedUser = await user.save();
+    console.log("User saved:", savedUser);
 
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: savedUser._id },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
+
+    console.log("Token created");
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -182,15 +188,19 @@ app.post("/signup", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Signup successful",
       token,
     });
+
   } catch (err) {
-    res.status(500).json({ message: "Signup failed" });
+    console.error(" SIGNUP CRASH:", err);
+    return res.status(500).json({
+      error: err.message,
+      stack: err.stack,
+    });
   }
 });
-
 // LOGIN
 app.post("/login", async (req, res) => {
   try {
